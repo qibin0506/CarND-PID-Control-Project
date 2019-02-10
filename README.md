@@ -3,6 +3,23 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflection
+Describe the effect each of the P, I, D components had in your implementation.
+Proportional component (P): Makes the car steer towards the CTE. It is achieved by multiplying the CTE by P values. It will never reach the CTE but will oscillate around it, resulting in an unsecure behaviour. That's the reason to use I and D temrs.
+
+Integral component (I): Compensates the systematic bias. When the car steering has been incorrectly fixed, lets say to the left, the I term should compensate it. This is achieved acumulating the value of the surface between the car position and the CTE over time, and multipying this value by the I coefficient.
+
+
+Differential component (D): Counter-steers when the car begins to steer toward the CTE. It goes smaller as the car drives towards the CTE, avoiding P component tendency to ring and overshoot the center line.
+
+The final values are:
+
+P = 0.18, I = 0, D = 3.0
+
+Result:
+
+You can observe the result in this video([https://youtu.be/GsOKjwxbiXE](https://youtu.be/GsOKjwxbiXE)).
+
 ## Dependencies
 
 * cmake >= 3.5
